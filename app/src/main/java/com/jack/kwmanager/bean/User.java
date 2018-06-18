@@ -2,6 +2,7 @@ package com.jack.kwmanager.bean;
 
 /**
  * Created by idea_jack on 2018/6/6.
+ * 用户的实体类
  */
 
 public class User {
