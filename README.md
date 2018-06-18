@@ -1,0 +1,2 @@
+# KWManager
+for goods manage
