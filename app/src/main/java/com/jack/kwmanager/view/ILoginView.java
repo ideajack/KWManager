@@ -1,5 +1,7 @@
 package com.jack.kwmanager.view;
 
+import android.content.Context;
+
 import com.jack.kwmanager.bean.User;
 
 /**
@@ -17,5 +19,7 @@ public interface ILoginView {
     void showLoading();
     void hideLoading();
     void toMenuActivity();
-    void showFailedError();
+    void showFailedError(int errorCode);
+
+    Context getContext();
 }

@@ -26,7 +26,7 @@ public class LoginPresenter {
 
     public void login () {
         loginView.showLoading();
-        userBiz.login(loginView.getUserName(), loginView.getPwd(), new OnLoginListener() {
+        userBiz.login(loginView.getContext(), loginView.getUserName(), loginView.getPwd(), new OnLoginListener() {
             @Override
             public void loginSuccess(User user) {
                 //此时非UI线程
@@ -43,11 +43,11 @@ public class LoginPresenter {
             }
 
             @Override
-            public void loginFailed() {
+            public void loginFailed(final int code) {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        loginView.showFailedError();
+                        loginView.showFailedError(code);
                         loginView.hideLoading();
                     }
                 });

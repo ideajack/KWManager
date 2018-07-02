@@ -1,11 +1,13 @@
 package com.jack.kwmanager.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jack.kwmanager.R;
 import com.jack.kwmanager.bean.User;
@@ -19,7 +21,7 @@ public class LoginActivity extends Activity implements ILoginView{
     private EditText mUserNameEt;
     private EditText mPwdEt;
     private Button mComfirmBtn;
-    private LoginPresenter loginPre = new LoginPresenter(this);
+    private LoginPresenter loginPresenter = new LoginPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class LoginActivity extends Activity implements ILoginView{
             @Override
             public void onClick(View v) {
                 //调用presenter 中的方法
-                loginPre.login();
+                loginPresenter.login();
             }
         });
     }
@@ -68,7 +70,16 @@ public class LoginActivity extends Activity implements ILoginView{
     }
 
     @Override
-    public void showFailedError() {
+    public void showFailedError(int code) {
+        if (code == 101) {
+            Toast.makeText(getContext(), "用户名错误", Toast.LENGTH_SHORT).show();
+        } else if (code == 102) {
+            Toast.makeText(getContext(), "密码错误", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
     }
 }

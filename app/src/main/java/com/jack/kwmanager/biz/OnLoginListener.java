@@ -8,5 +8,5 @@ import com.jack.kwmanager.bean.User;
 
 public interface OnLoginListener {
     void loginSuccess(User user);
-    void loginFailed();
+    void loginFailed(int errorCode);
 }
